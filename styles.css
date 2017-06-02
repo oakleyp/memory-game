@@ -1,0 +1,277 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Orbitron';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Orbitron Regular'), local('Orbitron-Regular'), url(http://fonts.gstatic.com/s/orbitron/v8/HmnHiRzvcnQr8CjBje6GQnYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+
+body {
+    /*Have this start here, and then change to color
+    currently applied in game screen with JS */
+    background: #348b9e;
+    padding: 25px 4vw;
+    text-align: center;
+    font-family: 'Orbitron';
+}
+
+/* --------- New Game Menu Styles ------------- */
+
+/*TODO: remove once JS implemented */
+#start-menu {
+    padding: 25px 200px;
+}
+
+#start-menu h1 {
+    font-size: 4em;
+    margin-top: 20vh;
+    margin-bottom: 25px;
+    color: white;
+}
+
+#start-menu h2 {
+    font-size: 3em;
+    font-weight: 800;
+    margin-bottom: 50px;
+    color: white;
+    font-variant: small-caps;
+}
+
+#button-menu {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 0px 30%;
+    perspective: 200px;
+}
+
+#easy-btn {
+    padding: 15px 25px;
+    border: 3px solid white;
+    margin-bottom: 20px;
+    color: white;
+    width: 100%;
+    -ms-transform: rotateY(-15deg); /* IE 9 */
+    -webkit-transform: rotateY(-15deg); /* Safari */
+    transform: rotateY(-15deg);
+}
+
+#hard-btn {
+    padding: 15px 25px;
+    border: 3px solid white;
+    color: white;
+    width:100%;
+    -ms-transform: rotateY(15deg); /* IE 9 */
+    -webkit-transform: rotateY(15deg); /* Safari */
+    transform: rotateY(15deg);
+}
+
+#easy-btn:hover, 
+#hard-btn:hover {
+    color: #348b9e;
+    background: white;
+}
+
+
+/* --------- Game Screen Styles --------------- */
+
+#game {
+    visibility: hidden;
+}
+#game h1 {
+    font-size: 4em;
+    font-weight: 300;
+    margin-top: 2vh;
+    margin-bottom: 25px;
+    color: white;
+}
+
+#game h1 i {
+    margin: 0px 10px;
+}
+
+#subheading-container {
+    padding: 10px 0px;
+    margin-bottom: 25px;
+}
+
+#lives {
+    float: left;
+    color: white;
+    margin-left: 10px;
+}
+
+#timer {
+    float: right;
+    color: white;
+}
+
+
+#easy-grid-container {
+    padding: 2vw 5px;
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+#easy-grid-container .box {
+    background: #7986cb;
+    width: 15vw;
+    height: 15vw;
+/*  padding: 17vw 17vw;*/
+    margin: 0px;
+    border-radius: 8px;
+}
+
+.box.fa {
+    font-size: 4em;
+}
+
+/* -------------- Animations ------------------ */
+
+/* Flips the box 180 deg counter-clockwise on x-axis */
+@keyframes flipfront {
+  from {
+    transform: perspective(400px) rotate3d(0, 1, 0, 360deg);
+    animation-timing-function: ease-out;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+    animation-timing-function: ease-out;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+    animation-timing-function: ease-in;
+  }
+}
+
+/* Flips the box 180 deg counter-clockwise on x-axis, while fading in for FA icon */
+@keyframes flipfrontfade {
+  from {
+    opacity: 0;
+    transform: perspective(400px) rotate3d(0, 1, 0, 360deg);
+    animation-timing-function: ease-out;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+    animation-timing-function: ease-out;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(400px) rotate3d(0, 1, 0, 180deg);
+    animation-timing-function: ease-in;
+  }
+}
+
+/* Flips the box 180 deg clockwise on x-axis */
+@keyframes flipback {
+    from {
+    transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    animation-timing-function: ease-out;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    animation-timing-function: ease-out;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    animation-timing-function: ease-in;
+  }
+}
+/* Flips the box 180 deg clockwise on x-axis, while fading out for FA icon */
+@keyframes flipbackfade {
+    from {
+    opacity: 1;
+    transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    animation-timing-function: ease-out;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    animation-timing-function: ease-out;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    opacity: 0;
+    transform: perspective(400px) rotate3d(0, 1, 0, -180deg);
+    animation-timing-function: ease-in;
+  }
+}
+
+
+
+
+/* class added by JS onClick */
+.box.flipfront{
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    animation-name: flipfront;
+    animation-duration: 1.5s; 
+    animation-play-state: running; 
+}
+.fa.flipfrontfade {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    animation-name: flipfrontfade;
+    animation-duration: 1.5s; 
+    animation-play-state: running; 
+}
+
+.box.flipback {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    animation-name: flipback;
+    animation-duration: 1.5s; 
+    animation-play-state: running; 
+}
+.fa.flipbackfade {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    animation-name: flipbackfade;
+    animation-duration: 1.5s; 
+    animation-play-state: running; 
+}
+
+
