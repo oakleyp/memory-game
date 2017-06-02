@@ -22,12 +22,11 @@
 }
 
 body {
-    /*Have this start here, and then change to color
-    currently applied in game screen with JS */
     background: #348b9e;
     padding: 25px 4vw;
     text-align: center;
     font-family: 'Orbitron';
+    height: 100vh;
 }
 
 /* --------- New Game Menu Styles ------------- */
@@ -39,9 +38,13 @@ body {
 
 #start-menu h1 {
     font-size: 4em;
-    margin-top: 20vh;
+    margin-top: 10vh;
     margin-bottom: 25px;
     color: white;
+}
+
+#start-menu h1 i {
+    margin: 0px 10px;
 }
 
 #start-menu h2 {
@@ -94,15 +97,16 @@ body {
 #game {
     visibility: hidden;
 }
-#game h1 {
+#game h1 a {
     font-size: 4em;
     font-weight: 300;
-    margin-top: 2vh;
+    margin-top: 1%;
     margin-bottom: 25px;
     color: white;
+    text-decoration: none;
 }
 
-#game h1 i {
+#game h1 a i {
     margin: 0px 10px;
 }
 
@@ -110,6 +114,11 @@ body {
     padding: 10px 0px;
     margin-bottom: 25px;
 }
+
+#subheading-container:after {
+    clear: both;
+}
+
 
 #lives {
     float: left;
@@ -120,27 +129,58 @@ body {
 #timer {
     float: right;
     color: white;
+    margin-right: 10px;
 }
 
 
 #easy-grid-container {
-    padding: 2vw 5px;
+    padding: 1vw 5px;
     display: grid;
     grid-gap: 2px;
     grid-template-columns: repeat(6, 1fr);
+    height: 68vh;
+    margin-bottom: 30px;
 }
 
 #easy-grid-container .box {
     background: #7986cb;
-    width: 15vw;
-    height: 15vw;
+    width: 100%;
+    height: 100%;
 /*  padding: 17vw 17vw;*/
     margin: 0px;
     border-radius: 8px;
 }
 
-.box.fa {
-    font-size: 4em;
+#hard-grid-container {
+    padding: 1vw 5px;
+    display: grid;
+    grid-gap: 2px;
+    grid-template-columns: repeat(8, 1fr);
+    height: 68vh;
+    margin-bottom: 30px;
+    visibility: hidden;
+}
+
+#hard-grid-container .box {
+    background: #7986cb;
+    width: 100%;
+    height: 100%;
+/*  padding: 17vw 17vw;*/
+    margin: 0px;
+    border-radius: 8px;
+}
+
+.box i {
+    font-size: 2em;
+    color: #FFF;
+}
+
+#youwon {
+    font-size: 3em;
+    color: #FFF;
+    position: absolute;
+    top: 42%;
+    left: 38%;
 }
 
 /* -------------- Animations ------------------ */
@@ -215,6 +255,7 @@ body {
     animation-timing-function: ease-in;
   }
 }
+
 /* Flips the box 180 deg clockwise on x-axis, while fading out for FA icon */
 @keyframes flipbackfade {
     from {
@@ -239,6 +280,36 @@ body {
     animation-timing-function: ease-in;
   }
 }
+/* Flips the box 360 deg clockwise on x-axis while fading in */
+@keyframes flip {
+  from {
+    opacity: 0;
+    transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
+    animation-timing-function: ease-out;
+  }
+
+  40% {
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
+    animation-timing-function: ease-out;
+  }
+
+  50% {
+    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
+    animation-timing-function: ease-in;
+  }
+
+  80% {
+    opacity: 1;
+    transform: perspective(400px) scale3d(.95, .95, .95);
+    animation-timing-function: ease-in;
+  }
+
+  to {
+    opacity: 1;
+    transform: perspective(400px);
+    animation-timing-function: ease-in;
+  }
+}
 
 
 
@@ -248,6 +319,14 @@ body {
     -webkit-backface-visibility: visible;
     backface-visibility: visible;
     animation-name: flipfront;
+    animation-duration: 1.5s; 
+    animation-play-state: running; 
+}
+
+.flipfront{
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+    animation-name: flip;
     animation-duration: 1.5s; 
     animation-play-state: running; 
 }
