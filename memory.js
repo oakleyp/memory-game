@@ -244,8 +244,10 @@ function startGame() {
 
                 }
             }
-
+            
             if (boxesOpen.length == 2) {
+                //Two boxes have been flipped, see if they match
+                
                 if (boxes[boxesOpen[1]].innerHTML == boxes[boxesOpen[0]].innerHTML) {
 
                     //We got a winning pair, leave flipped
@@ -258,8 +260,11 @@ function startGame() {
                         //alert("You won, please await your check for one zillion dollars");
                         startAnimation();
                         var wintext = document.getElementById('youwon');
+                        var subtext = document.getElementById('youwonsub');
                         wintext.classList.add('flipfront');
+                        subtext.classList.add('fadeIn');
                         wintext.innerHTML = "YOU WON!!!";
+                        subtext.innerHTML = "Click the logo to start over.";
 
                     }
 
@@ -274,7 +279,7 @@ function startGame() {
                         printLives(document.getElementById('lives'), lives);
                     } else {
                         //Loser
-                        alert("You lose, no cool ending animation this time.\nClick the memory logo to play again.");
+                        alert("You lose, no cool animation this time.\nClick the memory logo to play again.");
                         stopwatch.stop();
                     }
 

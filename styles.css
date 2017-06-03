@@ -178,11 +178,20 @@ body {
 #youwon {
     font-size: 3em;
     color: #FFF;
-    position: absolute;
-    top: 42%;
-    left: 38%;
+    position: relative;
+    top: 45%;
+    text-align: center;
+    z-index: 998;
 }
 
+#youwonsub {
+    font-size: 0.8em;
+    color: #FFF;
+    position: relative;
+    top: 50%;
+    text-align: center;
+    z-index: 998;
+}
 /* -------------- Animations ------------------ */
 
 /* Flips the box 180 deg counter-clockwise on x-axis */
@@ -311,6 +320,19 @@ body {
   }
 }
 
+/*Fades in */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    animation-timing-function: ease-out;
+  }
+
+  to {
+    opacity: 1;
+    animation-timing-function: ease-in;
+  }
+}
+
 
 
 
@@ -329,6 +351,12 @@ body {
     animation-name: flip;
     animation-duration: 1.5s; 
     animation-play-state: running; 
+}
+.fadein {
+    animation-name: fadeIn;
+    animation-duration: 1.5s; 
+    animation-play-state: running; 
+    animation-delay: 1.5s;
 }
 .fa.flipfrontfade {
     -webkit-backface-visibility: visible;
