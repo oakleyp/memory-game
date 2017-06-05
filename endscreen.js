@@ -37,18 +37,19 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function startAnimation() {
-
-
-
-
+async function startAnimation(difficulty = "easy") {
+    
     //Give CSS animations time to finish up
     await sleep(2000);
 
     setBgCSS();
 
     //Objects to be in orbit
+    
     var objs = document.getElementById('easy-grid-container').getElementsByTagName('i');
+    if(difficulty == "hard") {
+        objs = document.getElementById('hard-grid-container').getElementsByTagName('i');
+    }
 
     //set top and left coords close enough to center of the window, and as an accidental bonus, whichever part of the page that may be
     var centerx = Math.round(window.innerWidth * .4);

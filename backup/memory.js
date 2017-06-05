@@ -69,7 +69,7 @@ class StopWatch {
     }
 
     start() {
-        //Current timestamp in milliseconds, based on page load rather than Date.now() unix timestamp from 1970
+        //Current timestamp in milliseconds, based on page load rather than Date.now() unix timestamp
         if (!this.time) this.time = performance.now();
         if (!this.running) {
             this.running = true;
@@ -213,7 +213,6 @@ function startGame() {
         //Declare our box element and JS object in 'boxObjList' based on that element
         console.log(`Attempting to grab element id '${id}'`);
         var box = document.getElementById(id);
-        //Have to make 'box$X into just $X, to find it in boxes[]
         var intID = id.replace("box", "");
         var oListIndex = boxObjList[intID].id;
         var boxObj = boxObjList[oListIndex];
@@ -245,10 +244,8 @@ function startGame() {
 
                 }
             }
-            
+
             if (boxesOpen.length == 2) {
-                //Two boxes have been flipped, see if they match
-                
                 if (boxes[boxesOpen[1]].innerHTML == boxes[boxesOpen[0]].innerHTML) {
 
                     //We got a winning pair, leave flipped
@@ -258,18 +255,7 @@ function startGame() {
                     if (boxesMatched.length == boxes.length) {
                         stopwatch.stop();
                         //Wiiiiinnnnnnnerrrrrrrrr
-                        //alert("You won, please await your check for one zillion dollars");
-                        if(easyBtnPressed) {
-                            startAnimation();
-                        } else if (hardBtnPressed) {
-                            startAnimation("hard");
-                        }
-                        var wintext = document.getElementById('youwon');
-                        var subtext = document.getElementById('youwonsub');
-                        wintext.classList.add('flipfront');
-                        subtext.classList.add('fadeIn');
-                        wintext.innerHTML = "YOU WON!!!";
-                        subtext.innerHTML = "Click the logo to start over.";
+                        alert("You won, please await your check for one zillion dollars");
 
                     }
 
@@ -284,7 +270,7 @@ function startGame() {
                         printLives(document.getElementById('lives'), lives);
                     } else {
                         //Loser
-                        alert("You lose, no cool animation this time.\nClick the memory logo to play again.");
+                        alert("You lose");
                         stopwatch.stop();
                     }
 
