@@ -17,7 +17,7 @@
   font-family: 'Orbitron';
   font-style: normal;
   font-weight: 400;
-  src: local('Orbitron Regular'), local('Orbitron-Regular'), url(https://fonts.gstatic.com/s/orbitron/v8/HmnHiRzvcnQr8CjBje6GQnYhjbSpvc47ee6xR_80Hnw.woff2s) format('woff2');
+  src: local('Orbitron Regular'), local('Orbitron-Regular'), url(http://fonts.gstatic.com/s/orbitron/v8/HmnHiRzvcnQr8CjBje6GQnYhjbSpvc47ee6xR_80Hnw.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
 }
 
@@ -34,18 +34,10 @@ body {
 /*TODO: remove once JS implemented */
 #start-menu {
     padding: 25px 200px;
-    animation-name: floating;
-	-webkit-animation-name: floating;
-
-	animation-duration: 5s;	
-	-webkit-animation-duration: 5s;
-
-	animation-iteration-count: infinite;
-	-webkit-animation-iteration-count: infinite;
 }
 
 #start-menu h1 {
-    font-size: 5em;
+    font-size: 4em;
     margin-top: 10vh;
     margin-bottom: 25px;
     color: white;
@@ -105,16 +97,15 @@ body {
 #game {
     visibility: hidden;
 }
-#game h1 a {
+#game h1 {
     font-size: 4em;
     font-weight: 300;
     margin-top: 1%;
     margin-bottom: 25px;
     color: white;
-    text-decoration: none;
 }
 
-#game h1 a i {
+#game h1 i {
     margin: 0px 10px;
 }
 
@@ -183,23 +174,6 @@ body {
     color: #FFF;
 }
 
-#youwon {
-    font-size: 3em;
-    color: #FFF;
-    position: relative;
-    top: 45%;
-    text-align: center;
-    z-index: 998;
-}
-
-#youwonsub {
-    font-size: 0.8em;
-    color: #FFF;
-    position: relative;
-    top: 50%;
-    text-align: center;
-    z-index: 998;
-}
 /* -------------- Animations ------------------ */
 
 /* Flips the box 180 deg counter-clockwise on x-axis */
@@ -297,75 +271,6 @@ body {
     animation-timing-function: ease-in;
   }
 }
-/* Flips the box 360 deg clockwise on x-axis while fading in */
-@keyframes flip {
-  from {
-    opacity: 0;
-    transform: perspective(400px) rotate3d(0, 1, 0, -360deg);
-    animation-timing-function: ease-out;
-  }
-
-  40% {
-    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -190deg);
-    animation-timing-function: ease-out;
-  }
-
-  50% {
-    transform: perspective(400px) translate3d(0, 0, 150px) rotate3d(0, 1, 0, -170deg);
-    animation-timing-function: ease-in;
-  }
-
-  80% {
-    opacity: 1;
-    transform: perspective(400px) scale3d(.95, .95, .95);
-    animation-timing-function: ease-in;
-  }
-
-  to {
-    opacity: 1;
-    transform: perspective(400px);
-    animation-timing-function: ease-in;
-  }
-}
-
-/*Fades in */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    animation-timing-function: ease-out;
-  }
-
-  to {
-    opacity: 1;
-    animation-timing-function: ease-in;
-  }
-}
-
-/* Main menu 'floating' animation */
-@keyframes floating {
-	0% {
-		transform: translate(0%, 0%);
-	}
-	50% {
-		transform: translate(-3%, 5%);
-	}	
-	100% {
-		transform: translate(0%, 0%);
-	}			
-}
-
-@-webkit-keyframes floating {
-	0% {
-		-webkit-transform: translate(0%, 0%);
-	}
-	50% {
-		-webkit-transform: translate(-3%, 3%);
-	}	
-	100% {
-		-webkit-transform: translate(0%, 0%);
-	}			
-}
-
 
 
 
@@ -377,20 +282,6 @@ body {
     animation-name: flipfront;
     animation-duration: 1.5s; 
     animation-play-state: running; 
-}
-
-.flipfront{
-    -webkit-backface-visibility: visible;
-    backface-visibility: visible;
-    animation-name: flip;
-    animation-duration: 1.5s; 
-    animation-play-state: running; 
-}
-.fadein {
-    animation-name: fadeIn;
-    animation-duration: 1.5s; 
-    animation-play-state: running; 
-    animation-delay: 1.5s;
 }
 .fa.flipfrontfade {
     -webkit-backface-visibility: visible;
@@ -413,11 +304,6 @@ body {
     animation-name: flipbackfade;
     animation-duration: 1.5s; 
     animation-play-state: running; 
-}
-
-.invisible {
-    visibility: hidden;
-    font-size: 2em;
 }
 
 
