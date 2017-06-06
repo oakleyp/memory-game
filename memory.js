@@ -238,7 +238,7 @@ function startGame() {
                     //Animate closed boxes and clear FAico
                     box.classList.remove('flipfront');
                     box.classList.add('flipback');
-                    box.innerHTML = "";
+                    box.innerHTML = `<i class="invisible">i</i>`;
                     console.log(`Box #${boxObjList[boxesOpen[0]].elemid} clicked`);
                     boxesOpen = [];
 
@@ -311,11 +311,11 @@ function startGame() {
                         //Animate closed boxes and clear FAico
                         box1Elem.classList.remove('flipfront');
                         box1Elem.classList.add('flipback');
-                        box1Elem.innerHTML = "";
+                        box1Elem.innerHTML = `<i class="invisible">i</i>`;
 
                         box2Elem.classList.remove('flipfront');
                         box2Elem.classList.add('flipback');
-                        box2Elem.innerHTML = "";
+                        box2Elem.innerHTML = `<i class="invisible">i</i>`;
 
                         boxesOpen = [];
 
